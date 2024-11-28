@@ -1,4 +1,5 @@
 {
     "name": "json",
-    "targetType": "library"
+    "targetType": "library",
+    "description": "[WIP] Services are available for Json, Json5, and MessagePack."
 }

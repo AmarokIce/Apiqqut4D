@@ -12,9 +12,9 @@
 > 项目仍在开发初期，慎重用于严肃开发。 <br />
 > 如您遇到任何问题，请及时向我们反馈！ <br />
 
-![Language](https://badgen.net/badge/language/D/red)
-![License](https://badgen.net/badge/license/AGPL-3.0/green)
-![Pineapple](https://badgen.net/badge/Give%20Me/Pineapple/yellow)
+[![Language](https://badgen.net/badge/language/D/red)](https://dlang.org/)
+[![License](https://badgen.net/badge/license/AGPL-3.0/green)](https://www.gnu.org/licenses/agpl-3.0.html)
+[![Pineapple](https://badgen.net/badge/Give%20Me/Pineapple/yellow)](https://ifdian.net/a/AmarokIce)
 
 </div>
 

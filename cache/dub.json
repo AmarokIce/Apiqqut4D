@@ -1,6 +1,7 @@
 {
 	"name": "cache",
     "targetType": "library",
+    "description": "[BETA] Automatically scrap data and leave hot data behind",
     "dependencies": {
         "apiqqut:collection": "*"
     }

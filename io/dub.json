@@ -1,4 +1,5 @@
 {
 	"name": "io",
-    "targetType": "library"
+    "targetType": "library",
+    "description": "[WIP] A collection of operations on local files and data."
 }

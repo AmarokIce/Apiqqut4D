@@ -9,6 +9,7 @@
         ":csv": "*",
         ":event": "*",
         ":math": "*",
+        ":service": "*",
         ":io": "*"
     },
     "copyright": "Copyright (c) 2024, AmarokIce",
@@ -23,6 +24,7 @@
         "./csv/",
         "./event/",
         "./math/",
+        "./service/",
         "./io/"
     ]
 }

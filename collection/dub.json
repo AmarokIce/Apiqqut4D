@@ -1,6 +1,7 @@
 {
 	"name": "collection",
     "targetType": "library",
+    "description": "Encapsulated data structures, and smells like they're written in Java",
     "dependencies": {
         "apiqqut:math": "*"
     }

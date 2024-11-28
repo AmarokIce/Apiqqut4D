@@ -1,4 +1,5 @@
 {
 	"name": "math",
-    "targetType": "library"
+    "targetType": "library",
+    "description": "Additional math operations."
 }
