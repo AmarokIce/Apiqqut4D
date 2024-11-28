@@ -1,0 +1,28 @@
+{
+    "name": "apiqqut",
+    "targetType": "none",
+    "description": "A clean, lightweight code suite of local data structures.\nData processor, data storage, data IO... Data all in one!",
+    "dependencies": {
+        ":collection": "*",
+        ":cache": "*",
+        ":json": "*",
+        ":csv": "*",
+        ":event": "*",
+        ":math": "*",
+        ":io": "*"
+    },
+    "copyright": "Copyright (c) 2024, AmarokIce",
+    "license": "ISC",
+    "authors": [
+        "AmarokIce"
+    ],
+    "subPackages": [
+        "./collection",
+        "./cache",
+        "./json",
+        "./csv",
+        "./event",
+        "./math",
+        "./io"
+    ]
+}
