@@ -12,7 +12,7 @@
         ":io": "*"
     },
     "copyright": "Copyright (c) 2024, AmarokIce",
-    "license": "ISC",
+    "license": "AGPL-3.0",
     "authors": [
         "AmarokIce"
     ],
