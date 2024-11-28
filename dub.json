@@ -17,12 +17,12 @@
         "AmarokIce"
     ],
     "subPackages": [
-        "./collection",
-        "./cache",
-        "./json",
-        "./csv",
-        "./event",
-        "./math",
-        "./io"
+        "./collection/",
+        "./cache/",
+        "./json/",
+        "./csv/",
+        "./event/",
+        "./math/",
+        "./io/"
     ]
 }
