@@ -75,8 +75,6 @@ void addEnd(DataEvent event) {
 }
 
 void main() {
-    ClassInfo eventInfo = DataEvent.classinfo;
-
     // 通过参数来指定订阅的 Event
     registerEvent(&addEnd, EventPriority.Low);
     registerEvent(&addSpace);
