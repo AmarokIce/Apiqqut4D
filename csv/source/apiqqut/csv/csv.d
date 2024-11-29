@@ -1,10 +1,9 @@
 module apiqqut.csv.csv;
 
-import std.file;
 import std.string;
 import std.conv : to;
 
-string encodec(string[][] data) {
+string encodec(string[][] data, string filePath = "") {
     string datas = "";
 
     foreach (string[] line; data) {
@@ -14,28 +13,35 @@ string encodec(string[][] data) {
         datas = datas[0 .. -1] ~ "\n";
     }
 
+    if (filePath != "") {
+        import std.file : mkdir, write;
+
+        mkdir(replace(filePath, split(filePath, "/")[$ - 1], ""));
+        write(filePath, datas);
+    }
+
     return datas;
 }
 
-string encodecFromRow(string[][string] data) {
+string encodecFromRow(string[][string] data, string filePath = "") {
     string[][] datas = new string[][data.length];
     string[] keys = data.keys;
-    for(int i = 0; i < keys.length; i++) {
+    for (int i = 0; i < keys.length; i++) {
         string key = keys[i];
         datas[i] = key ~ data[key];
     }
 
-    return encodec(datas);
+    return encodec(datas, filePath);
 }
 
-string encodecFromCol(string[][string] data) {
+string encodecFromCol(string[][string] data, string filePath = "") {
     string[][] datas = new string[][1];
     string[] keys = data.keys;
     datas[0] = keys;
-    for(int i = 0; i < keys.length; i++) {
+    for (int i = 0; i < keys.length; i++) {
         string key = keys[i];
         string[] dat = data[key];
-        for(int o = 1; o <= dat.length; o++) {
+        for (int o = 1; o <= dat.length; o++) {
             if (o >= datas.length) {
                 datas ~= new string[0];
             }
@@ -49,7 +55,7 @@ string encodecFromCol(string[][string] data) {
         }
     }
 
-    return encodec(datas);
+    return encodec(datas, filePath);
 }
 
 string[][] decodec(string datas) {
@@ -81,6 +87,7 @@ string[][] decodec(string datas) {
                 break;
             }
         }
+        data[i] ~= str;
     }
 
     return data;
