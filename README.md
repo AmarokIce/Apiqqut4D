@@ -5,9 +5,9 @@
 # Apiqqut · 初雪
 ### 纯净的轻量级本地数据结构代码套件
 
-**📖 [Apiqqut wiki](https://github.com/AmarokIce/Apiqqut/wiki) | 📮 [问题反馈](https://github.com/AmarokIce/Apiqqut/issues) | 📚 [在 Dub 中访问](https://code.dlang.org/packages/apiqqut)**
+📖 [**Apiqqut wiki**](https://github.com/AmarokIce/Apiqqut/wiki) | 📮 [**问题反馈**](https://github.com/AmarokIce/Apiqqut/issues) | 📚 [**在 Dub 中访问**](https://apiqqut.dub.pm)
 
-| ***简体中文*** | [**繁體中文**](README.md) | [**English**](README.md) |
+| ***简体中文*** | [**正體中文**](README_TW.md) | [**English [WIP]**](README.md) |
 
 > 项目仍在开发初期，慎重用于严肃开发。 <br />
 > 如您遇到任何问题，请及时向我们反馈！ <br />
@@ -129,3 +129,14 @@ void main() {
 
 
 ```
+
+**当然！我们是开源且自由的项目库！我们欢迎任何人对 `Apiqqut` 作出贡献！**
+
+**我们遵循 AGNU-v3.0 自由软件许可证，这意味着你可以...**
+- **无需授权的在您的超酷项目中使用！**
+- **为 `Apiqqut` 做超酷的贡献，并自豪的向朋友们描述你的伟大贡献！**
+- **自由拷贝与分发 `Apiqqut`, 与任何朋友们分享！**
+
+**同时，您应该遵守相关的约定...**
+- **您需要以相同许可证重新开源您的项目，即便您正在做网络服务。**
+- **您不可以掠夺我们的凤梨。**
