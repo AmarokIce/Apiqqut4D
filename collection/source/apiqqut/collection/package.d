@@ -7,5 +7,4 @@ public {
     import apiqqut.collection.pair;
     import apiqqut.collection.multimap;
     import apiqqut.collection.iterator;
-    import apiqqut.collection.conv;
 }

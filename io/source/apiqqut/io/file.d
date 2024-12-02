@@ -1,6 +1,8 @@
 module apiqqut.io.file;
 
 import std.file;
+import core.sys.linux.sys.inotify;
+import core.sys.windows.winbase;
 
 //! @Beta
 //! The class `File` still in beta!
@@ -124,5 +126,11 @@ class File {
 
     string getPath() {
         return this.path;
+    }
+
+    string getFileTime() {
+        // TODO
+
+        return "";
     }
 }
