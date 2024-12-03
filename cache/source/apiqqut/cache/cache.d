@@ -1,8 +1,5 @@
 module apiqqut.cache.cache;
 
-// TODO
-//! @Beta
-
 abstract class Cache(T) {
     protected const int size;
     this(int size) {
