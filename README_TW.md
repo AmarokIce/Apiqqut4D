@@ -7,7 +7,7 @@
 
 📖 [**Apiqqut wiki**](https://github.com/AmarokIce/Apiqqut/wiki) | 📮 [**問題反饋**](https://github.com/AmarokIce/Apiqqut/issues) | 📚 [**在 Dub 中訪問**](https://apiqqut.dub.pm)
 
-| [**簡體中文**](README.md) | ***正體中文*** | [**English [WIP]**](README.md) |
+| [**簡體中文**](README_CN.md) | [***正體中文*** ](README_TW.md)| [**English**](README.md) |
 
 > 項目仍在開發初期，慎重用於嚴肅開發。 <br />
 > 如您遇到任何問題，請及時向我們反饋！ <br />
@@ -132,7 +132,7 @@ void main() {
 
 **當然！我們是開源且自由的項目庫！我們歡迎任何人對 `Apiqqut` 作出貢獻！**
 
-**我們遵循 AGNU-v3.0 自由軟體許可證，這意味著你可以...**
+**我們遵循 AGPL-v3.0 自由軟體許可證，這意味著你可以...**
 - **無需授權的在您的超酷項目中使用！**
 - **為 `Apiqqut` 做超酷的貢獻，並自豪的向朋友們描述你的偉大貢獻！**
 - **自由拷貝與分發 `Apiqqut`, 與任何朋友們分享！**

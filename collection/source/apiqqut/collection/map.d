@@ -137,7 +137,7 @@ class HashMap(K, V) : Map!(K, V) {
 class LinkedHashMap(K, V) : Map!(K, V) {
     private V[K] map;
 
-    import apiqqut.container.list : LinkedList;
+    import apiqqut.collection.list : LinkedList;
 
     LinkedList!K keyList = new LinkedList!K();
 

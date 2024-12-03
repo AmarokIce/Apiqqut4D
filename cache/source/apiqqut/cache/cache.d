@@ -1,12 +1,10 @@
 module apiqqut.cache.cache;
 
-import apiqqut.collection.map;
-
 // TODO
 //! @Beta
 
 abstract class Cache(T) {
-    protected int size;
+    protected const int size;
     this(int size) {
         this.size = size;
     }
@@ -17,6 +15,8 @@ abstract class Cache(T) {
 }
 
 class LinkedCache(T) : Cache!T {
+    import apiqqut.collection.map;
+
     LinkedHashMap!(string, T) map = new LinkedHashMap!(string, T)();
 
     this(int size = 50) {
