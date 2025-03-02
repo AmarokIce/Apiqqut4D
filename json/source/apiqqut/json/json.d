@@ -4,6 +4,8 @@ import std.string;
 import std.conv : to;
 import std.file;
 
+// TODO - Overwrite all, with JsonNode.
+
 V[string] parseMap(V)(string inp) {
     return parseMap(readText(path));
 }
