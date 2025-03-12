@@ -25,7 +25,7 @@ interface Multimap(K, V) {
 }
 
 class HashMultimap(K, V) : Multimap!(K, V) {
-    Map!(K, ArrayList!V) map = new HashMap!(K, ArrayList!V)();
+    const Map!(K, ArrayList!V) map = new HashMap!(K, ArrayList!V)();
 
     this() {
     }

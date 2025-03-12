@@ -22,7 +22,7 @@ interface List(T) {
 }
 
 class ArrayList(T) : List!T {
-    private T[] array;
+    const T[] array;
 
     this() {
         this.array = new T[0];

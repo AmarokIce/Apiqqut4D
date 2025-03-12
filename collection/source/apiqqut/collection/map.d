@@ -29,7 +29,7 @@ interface Map(K, V) {
 
 // The Associative Array is the Hash Map so...
 class HashMap(K, V) : Map!(K, V) {
-    private V[K] map;
+    const V[K] map;
 
     this() {
     }
@@ -135,9 +135,9 @@ class HashMap(K, V) : Map!(K, V) {
 }
 
 class LinkedHashMap(K, V) : Map!(K, V) {
-    private V[K] map;
-
     import apiqqut.collection.list : LinkedList;
+
+    const V[K] map;
 
     LinkedList!K keyList = new LinkedList!K();
 
@@ -300,7 +300,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
 }
 
 class ImmutableMap(K, V) : Map!(K, V) {
-    private const V[K] map;
+    const V[K] map;
 
     this() {
     }
