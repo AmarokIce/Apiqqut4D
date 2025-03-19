@@ -25,6 +25,8 @@ interface Map(K, V) {
     IPair!(K, V)[] pairs();
 
     V[K] copy();
+
+    void forEach(void function(K, V) func);
 }
 
 // The Associative Array is the Hash Map so...
@@ -132,6 +134,13 @@ class HashMap(K, V) : Map!(K, V) {
 
         return mp;
     }
+
+    override void forEach(void function(K, V) func) {
+        foreach (K key; this.keys) {
+            V value = this.get(key);
+            func(key, value);
+        }
+    }
 }
 
 class LinkedHashMap(K, V) : Map!(K, V) {
@@ -225,7 +234,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
     }
 
     override K[] keys() {
-        return this.map.keys;
+        return this.keyList;
     }
 
     override V[] values() {
@@ -296,6 +305,13 @@ class LinkedHashMap(K, V) : Map!(K, V) {
         }
 
         return -1;
+    }
+
+    override void forEach(void function(K, V) func) {
+        foreach (K key; this.keys) {
+            V value = this.get(key);
+            func(key, value);
+        }
     }
 }
 
@@ -399,5 +415,12 @@ class ImmutableMap(K, V) : Map!(K, V) {
         }
 
         return mp;
+    }
+
+    override void forEach(void function(K, V) func) {
+        foreach (K key; this.keys) {
+            V value = this.get(key);
+            func(key, value);
+        }
     }
 }

@@ -1,6 +1,8 @@
 module apiqqut.collection.list;
 
-interface List(T) {
+import apiqqut.collection.iterator;
+
+interface List(T) : IIteratorable!T {
     T add(T obj);
     T insert(T obj, int index);
     void addAll(T[] list);
@@ -19,6 +21,39 @@ interface List(T) {
 
     int size();
     T[] asArray();
+
+    void forEach(void function(T) func);
+}
+
+class ListIterator(T) : Iterator!T {
+    private List!T self;
+    private int topPoint;
+
+    this(List!T list) {
+        this.self = list;
+        this.topPoint = 0;
+    }
+
+    override T next() {
+        return self.get(this.topPoint++);
+    }
+
+    override T peek() {
+        return self.get(this.topPoint - 1);
+    }
+
+    override bool remove() {
+        if (this.topPoint <= this.self.size) {
+            this.self.removeAt(this.topPoint - 1);
+            return true;
+        }
+
+        return false;
+    }
+
+    override bool hasNext() {
+        return this.topPoint < this.self.size;
+    }
 }
 
 class ArrayList(T) : List!T {
@@ -107,6 +142,20 @@ class ArrayList(T) : List!T {
 
     override T[] asArray() {
         return this.array.dup;
+    }
+
+    override void forEach(void function(T) func) {
+        foreach (T obj; this.array) {
+            func(obj);
+        }
+    }
+
+    override Iterator getIterator() {
+        return new Iterator(this.asArray);
+    }
+
+    override Iterator!T getIterator() {
+        return new ListIterator(this);
     }
 }
 
@@ -339,6 +388,19 @@ class LinkedList(T) : List!T {
         }
         while (node != this.firstNode);
         return arr;
+    }
+
+    override void forEach(void function(T) func) {
+        Node node = this.firstNode;
+        do {
+            func(node.dat);
+            node = node.next;
+        }
+        while (node != this.firstNode);
+    }
+
+    override Iterator!T getIterator() {
+        return new ListIterator(this);
     }
 }
 

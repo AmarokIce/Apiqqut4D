@@ -1,30 +1,47 @@
 module apiqqut.collection.iterator;
 
-import apiqqut.collection.list : ArrayList;
+import apiqqut.collection.stack;
 
-// TODO
-
-interface IIterator(T) {
+interface IIteratorable(T) {
     Iterator!T getIterator();
 }
 
-class Iterator(T) {
-    List!T list;
+abstract class Iterator(T) {
+    abstract T next();
+    abstract T peek();
+    abstract bool hasNext();
+    abstract bool remove();
+}
 
-    this(List!T list) {
-        this.list = new ArrayList(list);
-    }
+class ArrayIterator(T): Iterator!T {
+    private Stack!T stack;
 
     this(T[] list) {
-        this.list = new ArrayList(list);
+        import std.conv : to;
+        const int maxSize = to!int(list.length);
+        this.stack = new Stack!T(maxSize);
+        for(int i = maxSize - 1; i >= 0; i--) {
+            stack.push(list[i]);
+        }
     }
 
-
-    T next() {
-        return list.removeAt(0);
+    override T next() {
+        return stack.pop();
     }
 
-    bool hasNext() {
-        return list.size > 0;
+    override T peek() {
+        return stack.peek();
     }
+
+    override bool hasNext() {
+        return !stack.isEmpty;
+    }
+
+    override bool remove() {
+        return false;
+    }
+}
+
+ArrayIterator iterator(T)(T[] arr) {
+    return new ArrayIterator(arr);
 }
