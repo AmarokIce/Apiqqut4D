@@ -10,7 +10,8 @@
         ":event": "*",
         ":math": "*",
         ":service": "*",
-        ":io": "*"
+        ":io": "*",
+        ":func": "*"
     },
     "copyright": "Copyright (c) 2024, AmarokIce",
     "license": "AGPL-3.0",
@@ -25,6 +26,7 @@
         "./event/",
         "./math/",
         "./service/",
-        "./io/"
+        "./io/",
+        "./func/"
     ]
 }
