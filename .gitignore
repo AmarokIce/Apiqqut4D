@@ -14,3 +14,4 @@ apiqqut-test-*
 *.lib
 *.dll
 *.so
+apiqqut-*-test-library

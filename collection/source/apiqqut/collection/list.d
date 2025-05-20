@@ -2,7 +2,7 @@ module apiqqut.collection.list;
 
 import apiqqut.collection.iterator;
 
-interface List(T) : IIteratorable!T {
+interface List(T) {
     T add(T obj);
     T insert(T obj, int index);
     void addAll(T[] list);
@@ -23,6 +23,8 @@ interface List(T) : IIteratorable!T {
     T[] asArray();
 
     void forEach(void function(T) func);
+
+    Iterator!T getIterator();
 }
 
 class ListIterator(T) : Iterator!T {
@@ -56,8 +58,29 @@ class ListIterator(T) : Iterator!T {
     }
 }
 
+unittest {
+    List!string list = new ArrayList!string();
+    list.add("Test0");
+    list.addAll(["Test1", "Test2", "Test3", "Test3"]);
+
+    assert(list.get(0) == "Test0");
+    assert(list.get(0) == list.removeAt(0));
+    assert(list.get(0) == "Test1");
+    assert(list.get(2) == list.get(3));
+    assert(list.contains("Test0") == false);
+
+    list.removeFirst("Test3");
+    assert(list.size() == 3);
+
+    auto generator = list.getIterator();
+    assert(generator.next() == generator.peek());
+    assert(generator.next() == "Test2");
+    assert(generator.next() == "Test3");
+    assert(!generator.hasNext == true);
+}
+
 class ArrayList(T) : List!T {
-    const T[] array;
+    private T[] array;
 
     this() {
         this.array = new T[0];
@@ -150,13 +173,30 @@ class ArrayList(T) : List!T {
         }
     }
 
-    override Iterator getIterator() {
-        return new Iterator(this.asArray);
-    }
-
     override Iterator!T getIterator() {
-        return new ListIterator(this);
+        return new ListIterator!T(this);
     }
+}
+
+
+unittest {
+    List!string list = new LinkedList!string();
+    list.add("Test0");
+    list.addAll(["Test1", "Test2", "Test3", "Test3"]);
+
+    assert(list.get(0) == "Test0");
+    assert(list.get(0) == list.removeAt(0));
+    assert(list.get(0) == "Test1");
+    assert(list.get(2) == list.get(3));
+
+    list.removeFirst("Test3");
+    assert(list.size() == 3);
+
+    auto generator = list.getIterator();
+    assert(generator.next() == generator.peek());
+    assert(generator.next() == "Test2");
+    assert(generator.next() == "Test3");
+    assert(!generator.hasNext == true);
 }
 
 class LinkedList(T) : List!T {
@@ -194,6 +234,14 @@ class LinkedList(T) : List!T {
     private int length = 0;
 
     this() {
+    }
+
+    this(T[] dat) {
+        this.addAll(dat);
+    }
+
+    this(List!T dat) {
+        this.addAll(dat);
     }
 
     private int setIndexInLength(int index) {
@@ -314,7 +362,7 @@ class LinkedList(T) : List!T {
         Node node = this.firstNode;
         int index = 0;
         do {
-            if (node.dat == object) {
+            if (node.dat == obj) {
                 return index;
             }
             index++;
@@ -366,7 +414,9 @@ class LinkedList(T) : List!T {
             return null;
         }
 
-        return indexOf(object) != -1 ? removeAt(index) : null;
+        int index = indexOf(object);
+
+        return index != -1 ? removeAt(index) : null;
     }
 
     override void clear() {
@@ -400,7 +450,7 @@ class LinkedList(T) : List!T {
     }
 
     override Iterator!T getIterator() {
-        return new ListIterator(this);
+        return new ListIterator!T(this);
     }
 }
 

@@ -29,9 +29,23 @@ interface Map(K, V) {
     void forEach(void function(K, V) func);
 }
 
-// The Associative Array is the Hash Map so...
+unittest {
+    Map!(string, int) map = new HashMap!(string, int)();
+    map.put("Test0", 4);
+    map.put("Test1", 3);
+    map.put("Test2", 2);
+    map.put("Test3", 1);
+
+    assert(map.get("Test0") == 4);
+    assert(map.put("Test0", 2) == map.get("Test2"));
+
+    map.remove("Test0");
+    assert(map.contains("Test0") == false);
+    assert(map.get("Test0") == 0);  // null of int is zero.
+}
+
 class HashMap(K, V) : Map!(K, V) {
-    const V[K] map;
+    private V[K] map;
 
     this() {
     }
@@ -71,8 +85,7 @@ class HashMap(K, V) : Map!(K, V) {
     }
 
     override V get(K key) {
-        auto dat = key in this.map;
-        return dat is null ? null : *dat;
+        return contains(key) ? this.map[key] : cast(V)(null);
     }
 
     override V getOrDefault(K key, V defValue) {
@@ -85,7 +98,7 @@ class HashMap(K, V) : Map!(K, V) {
 
     override V remove(K key) {
         if (!this.contains(key)) {
-            return null;
+            return cast(V)(null);
         }
         auto value = this.map[key];
         this.map.remove(key);
@@ -143,10 +156,26 @@ class HashMap(K, V) : Map!(K, V) {
     }
 }
 
+
+unittest {
+    Map!(string, int) map = new LinkedHashMap!(string, int)();
+    map.put("Test0", 4);
+    map.put("Test1", 3);
+    map.put("Test2", 2);
+    map.put("Test3", 1);
+
+    assert(map.get("Test0") == 4);
+    assert(map.put("Test0", 2) == map.get("Test2"));
+
+    map.remove("Test0");
+    assert(map.contains("Test0") == false);
+    assert(map.get("Test0") == 0);  // null of int is zero.
+}
+
 class LinkedHashMap(K, V) : Map!(K, V) {
     import apiqqut.collection.list : LinkedList;
 
-    const V[K] map;
+    private V[K] map;
 
     LinkedList!K keyList = new LinkedList!K();
 
@@ -154,15 +183,14 @@ class LinkedHashMap(K, V) : Map!(K, V) {
     }
 
     this(Map!(K, V) map) {
-        V[K] mp = map.copy;
-        foreach (K key; mp) {
-            this.map[key] = mp[key];
+        foreach (K key; map.keys()) {
+            this.map[key] = map.get(key);
             this.keyList.add(key);
         }
     }
 
     this(V[K] map) {
-        foreach (K key; map) {
+        foreach (K key; map.keys) {
             this.map[key] = map[key];
             this.keyList.add(key);
         }
@@ -183,7 +211,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
     }
 
     override void putAll(V[K] map) {
-        foreach (K key; map) {
+        foreach (K key; map.keys) {
             this.map[key] = map[key];
             this.keyList.removeFirst(key);
             this.keyList.add(key);
@@ -195,8 +223,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
     }
 
     override V get(K key) {
-        auto dat = key in this.map;
-        return dat is null ? null : *dat;
+        return this.contains(key) ? this.map[key] : cast(V)null;
     }
 
     override V getOrDefault(K key, V defValue) {
@@ -209,7 +236,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
 
     override V remove(K key) {
         if (!this.contains(key)) {
-            return null;
+            return cast(V)null;
         }
         auto value = this.map[key];
         this.map.remove(key);
@@ -234,7 +261,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
     }
 
     override K[] keys() {
-        return this.keyList;
+        return this.keyList.asArray();
     }
 
     override V[] values() {
@@ -253,7 +280,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
 
     override V[K] copy() {
         V[K] mp;
-        foreach (K key; this.map) {
+        foreach (K key; this.keys()) {
             mp[key] = this.map[key];
         }
 
@@ -271,7 +298,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
     V putAt(K key, V value, int index) {
         this.map[key] = value;
         this.keyList.removeFirst(key);
-        this.keyList.addTo(key, index);
+        this.keyList.insert(key, index);
         return value;
     }
 
@@ -282,7 +309,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
 
     void setKeyTo(int indexOfKey, int newIndexOf) {
         K key = this.keyList.removeAt(indexOfKey);
-        this.keyList.addTo(key, newIndexOf);
+        this.keyList.insert(key, newIndexOf);
     }
 
     void setKeyToFirst(int indexOf) {
@@ -316,7 +343,7 @@ class LinkedHashMap(K, V) : Map!(K, V) {
 }
 
 class ImmutableMap(K, V) : Map!(K, V) {
-    const V[K] map;
+    private const V[K] map;
 
     this() {
     }

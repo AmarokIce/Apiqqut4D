@@ -2,9 +2,9 @@ module apiqqut.event.eventbus;
 
 import apiqqut.event.event;
 
-//* Event List
 private void function(Event)[][EventPriority][ClassInfo] eventMap;
 
+// TODO allow delegate
 void registerEvent(T : Event)(void function(T) event, EventPriority priority = EventPriority.Common) {
     void function(Event)[][EventPriority] data;
     if (T.classinfo in eventMap) {
@@ -19,7 +19,7 @@ void registerEvent(T : Event)(void function(T) event, EventPriority priority = E
     eventMap[T.classinfo] = data;
 }
 
-T postEvent(T : Event)(T event) {
+T postEvent(T : Event)(T event) pure @safe {
     ClassInfo eventClass = event.classinfo;
 
     void function(Event)[][EventPriority] eventDatas;
