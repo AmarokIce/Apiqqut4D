@@ -1,11 +1,11 @@
 module apiqqut.io.reader;
 
 interface IReader {
-    string read();
+  string read();
 
-    bool ready();
+  bool ready();
 
-    void reset();
+  void reset();
 }
 
 class LineReader {

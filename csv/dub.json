@@ -1,5 +1,5 @@
 {
-	"name": "csv",
-    "targetType": "library",
-    "description": "Read/write to csv file, fast and clear."
+  "name": "csv",
+  "targetType": "library",
+  "description": "Read/write to csv file, fast and clear."
 }

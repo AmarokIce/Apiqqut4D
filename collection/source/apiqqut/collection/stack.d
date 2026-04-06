@@ -1,50 +1,50 @@
 module apiqqut.collection.stack;
 
 class Stack(T) {
-    private int top;
-    private T[] stack;
-    private const int maxSizeOf;
+  private int top;
+  private T[] stack;
+  private const int maxSizeOf;
 
-    this(int stackSize) {
-        if (stackSize <= 0) {
-            throw new Exception("Stack size can't less as zero!");
-        }
-
-        this.maxSizeOf = stackSize;
-        this.top = 0;
-        this.stack = T[stackSize];
+  this(int stackSize) {
+    if (stackSize <= 0) {
+      throw new Exception("Stack size can't less as zero!");
     }
 
-    bool push(T obj) {
-        if (this.isFull) {
-            return false;
-        }
+    this.maxSizeOf = stackSize;
+    this.top = 0;
+    this.stack = T[stackSize];
+  }
 
-        this.stack[top++] = obj;
-        return true;
+  bool push(T obj) {
+    if (this.isFull) {
+      return false;
     }
 
-    T pop() {
-        if (this.isEmpty) {
-            throw new Exception("Stack empty now!");
-        }
+    this.stack[top++] = obj;
+    return true;
+  }
 
-        return this.stack[--top];
+  T pop() {
+    if (this.isEmpty) {
+      throw new Exception("Stack empty now!");
     }
 
-    T peek() {
-        return this.stack[top - 1];
-    }
+    return this.stack[--top];
+  }
 
-    bool isFull() {
-        return this.top == this.maxSizeOf;
-    }
+  T peek() {
+    return this.stack[top - 1];
+  }
 
-    bool isEmpty() {
-        return this.top > 0;
-    }
+  bool isFull() {
+    return this.top == this.maxSizeOf;
+  }
 
-    int getTopPoint() {
-        return this.top;
-    }
+  bool isEmpty() {
+    return this.top > 0;
+  }
+
+  int getTopPoint() {
+    return this.top;
+  }
 }

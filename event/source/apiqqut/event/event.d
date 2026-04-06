@@ -1,15 +1,15 @@
 module apiqqut.event.event;
 
 class Event {
-    bool shouldCancel;
+  bool shouldCancel;
 
-    void setCancel(bool shouldCancel = true) {
-        this.shouldCancel = shouldCancel;
-    }
+  void setCancel(bool shouldCancel = true) {
+    this.shouldCancel = shouldCancel;
+  }
 }
 
 enum EventPriority {
-    High,
-    Common,
-    Low
+  High,
+  Common,
+  Low
 }

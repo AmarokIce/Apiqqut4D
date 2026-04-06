@@ -1,4 +1,5 @@
 module apiqqut.csv;
 
-public:
-import apiqqut.csv.csv;
+public {
+  import apiqqut.csv.csv;
+}

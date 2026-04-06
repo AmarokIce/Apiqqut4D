@@ -1,48 +1,48 @@
 module apiqqut.cache.cache;
 
 abstract class Cache(T) {
-    protected const int size;
-    this(int size) {
-        this.size = size;
-    }
+  protected const int size;
+  this(int size) {
+    this.size = size;
+  }
 
-    T put(string key, T value);
-    T get(string key);
-    bool contains(string key);
+  T put(string key, T value);
+  T get(string key);
+  bool contains(string key);
 }
 
 class LinkedCache(T) : Cache!T {
-    import apiqqut.collection.map;
+  import apiqqut.collection.map;
 
-    LinkedHashMap!(string, T) map = new LinkedHashMap!(string, T)();
+  LinkedHashMap!(string, T) map = new LinkedHashMap!(string, T)();
 
-    this(int size = 50) {
-        super(size);
+  this(int size = 50) {
+    super(size);
+  }
+
+  override T put(string key, T value) {
+    if (this.map.size == this.size) {
+      this.map.removeAt(0);
     }
 
-    override T put(string key, T value) {
-        if (this.map.size == this.size) {
-            this.map.removeAt(0);
-        }
+    return this.map.put(key, value);
+  }
 
-        return this.map.put(key, value);
+  override T get(string key) {
+    if (!this.contains(key)) {
+      return null;
     }
 
-    override T get(string key) {
-        if (!this.contains(key)) {
-            return null;
-        }
-
-        int indexOf = this.map.keyAt(key);
-        if (indexOf == -1) {
-            return null;
-        }
-
-        this.map.setKeyToLast(indexOf);
-        return map.get(key);
+    int indexOf = this.map.keyAt(key);
+    if (indexOf == -1) {
+      return null;
     }
 
-    override bool contains(string key) {
-        return this.map.contains(key);
-    }
+    this.map.setKeyToLast(indexOf);
+    return map.get(key);
+  }
+
+  override bool contains(string key) {
+    return this.map.contains(key);
+  }
 }
