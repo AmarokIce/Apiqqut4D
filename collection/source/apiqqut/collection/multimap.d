@@ -3,12 +3,11 @@ module apiqqut.collection.multimap;
 import apiqqut.collection.list;
 import apiqqut.collection.map;
 
+
 interface Multimap(K, V) {
     V put(K key, V value);
     void putAll(K key, V[] value);
     void putAll(K key, List!V value);
-
-    int size();
 
     List!V get(K key);
     V get(K key, int index);
@@ -25,35 +24,15 @@ interface Multimap(K, V) {
     List!(V)[] values();
 }
 
-unittest {
-    Multimap!(string, string) mmap = new HashMultimap!(string, string)();
-    mmap.put("Test0", "TestTest0");
-    mmap.put("Test0", "TestTest1");
-    mmap.put("Test0", "TestTest2");
-
-    mmap.put("Test1", "TestTest0");
-    mmap.put("Test1", "TestTest1");
-    mmap.put("Test1", "TestTest2");
-
-    for(int i = 0; i < 3; i++) {
-        assert(mmap.get("Test0").get(i) == mmap.get("Test1").get(i));
-    }
-
-    mmap.removeAt("Test0", 0);
-    assert(mmap.size() == 2);
-    mmap.remove("Test0");
-    assert(mmap.size() == 1);
-}
-
 class HashMultimap(K, V) : Multimap!(K, V) {
-    private Map!(K, ArrayList!V) map = new HashMap!(K, ArrayList!V)();
+    const Map!(K, ArrayList!V) map = new HashMap!(K, ArrayList!V)();
 
     this() {
     }
 
     this(V[][K] aList) {
-        foreach (K key; aList.keys) {
-            this.map.put(key, new ArrayList!V(aList[key]));
+        foreach(K key; aList.keys) {
+            this.map.put(key, new ArrayList(aList[key]));
         }
     }
 
@@ -62,7 +41,7 @@ class HashMultimap(K, V) : Multimap!(K, V) {
     }
 
     override V put(K key, V value) {
-        this.map.putIfNotExist(cast(K) key, new ArrayList!V()).add(cast(V) value);
+        this.map.putIfNotExist(cast(K)key, new ArrayList!V()).add(cast(V)value);
         return value;
     }
 
@@ -80,10 +59,6 @@ class HashMultimap(K, V) : Multimap!(K, V) {
 
     override V get(K key, int index) {
         return this.contains(key) ? this.get(key).get(index) : null;
-    }
-
-    override int size() {
-        return cast(int)this.keys().length;
     }
 
     override bool contains(K key) {
@@ -122,6 +97,6 @@ class HashMultimap(K, V) : Multimap!(K, V) {
     }
 
     override List!(V)[] values() {
-        return cast(List!(V)[]) this.map.values();
+        return cast(List!(V)[])this.map.values();
     }
 }
