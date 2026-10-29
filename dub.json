@@ -1,32 +1,30 @@
 {
-    "name": "apiqqut",
-    "targetType": "none",
-    "description": "A clean, lightweight code suite of local data structures.\nData processor, data storage, data IO... Data all in one!",
-    "dependencies": {
-        ":collection": "*",
-        ":cache": "*",
-        ":json": "*",
-        ":csv": "*",
-        ":event": "*",
-        ":math": "*",
-        ":service": "*",
-        ":io": "*",
-        ":func": "*"
-    },
-    "copyright": "Copyright (c) 2024, AmarokIce",
-    "license": "AGPL-3.0",
-    "authors": [
-        "AmarokIce"
-    ],
-    "subPackages": [
-        "./collection/",
-        "./cache/",
-        "./json/",
-        "./csv/",
-        "./event/",
-        "./math/",
-        "./service/",
-        "./io/",
-        "./func/"
-    ]
+  "name": "apiqqut",
+  "targetType": "none",
+  "description": "A clean, lightweight code suite of local data structures.\nData processor, data storage, data IO... Data all in one!",
+  "dependencies": {
+    ":collection": "*",
+    ":cache": "*",
+    ":json": "*",
+    ":csv": "*",
+    ":event": "*",
+    ":math": "*",
+    ":service": "*",
+    ":io": "*",
+    ":func": "*"
+  },
+  "copyright": "Copyright (c) 2024, AmarokIce",
+  "license": "AGPL-3.0",
+  "authors": ["AmarokIce"],
+  "subPackages": [
+    "./collection/",
+    "./cache/",
+    "./json/",
+    "./csv/",
+    "./event/",
+    "./math/",
+    "./service/",
+    "./io/",
+    "./func/"
+  ]
 }

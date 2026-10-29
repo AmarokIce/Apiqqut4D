@@ -3,11 +3,12 @@
 ![](img/thumbnail_amaroklce@1,5x.png)
 
 # Apiqqut · 初雪
+
 ### 純淨的輕量級在地數據結構代碼套件
 
 📖 [**Apiqqut wiki**](https://github.com/AmarokIce/Apiqqut/wiki) | 📮 [**問題反饋**](https://github.com/AmarokIce/Apiqqut/issues) | 📚 [**在 Dub 中訪問**](https://apiqqut.dub.pm)
 
-| [**簡體中文**](README_CN.md) | [***正體中文*** ](README_TW.md)| [**English**](README.md) |
+| [**簡體中文**](README_CN.md) | [**_正體中文_** ](README_TW.md)| [**English**](README.md) |
 
 > 項目仍在開發初期，慎重用於嚴肅開發。 <br />
 > 如您遇到任何問題，請及時向我們反饋！ <br />
@@ -19,6 +20,7 @@
 </div>
 
 **`Apiqqut` 向您問候！您一定在好奇，`Apiqqut` 是什麼？當然，請允許我們向您介紹！`Apiqqut` 是...**
+
 - 數據結構容器的代碼庫：
   - `List`, `Map`, `Table`, `Multimap`... 我們來自 Java, 為了快速解決數據封裝的麻煩，我們準備了這些集合容器。如果您來自 Java, 那麼您會倍感親切——`Apiqqut` 是為您解決麻煩而來的。
 - 低耦合化處理的代碼庫：
@@ -33,6 +35,7 @@
   - 您不關心這個？這樣的話我們會很傷心的誒 QwQ
 
 **您的超酷的項目使用了 `Apiqqut` 會變得...**
+
 - 更酷！
   - `Apiqqut` 的簡單易學習能夠讓任何開發者與興趣驅動者翻閱您的項目時得到更好的體驗！
 - 更快！
@@ -40,10 +43,10 @@
 - 更小！
   - 我們關註最小最輕的設計結構，因此我們模塊化設計每一個部分，模塊之間隻會在必要的複用設計的情況下存在關聯。`Apiqqut` 保證不會讓您的依賴組件的體積膨脹！
 
-
 **準備好開始探索 `Apiqqut` 了嗎？我們這兒有一些您會感興趣的示例：**
 
 **Event:**
+
 ```d
 import std.stdio : writeln;
 
@@ -90,8 +93,8 @@ void main() {
 }
 ```
 
-
 **Collection:**
+
 ```d
 import std.stdio : writeln;
 import apiqqut.collection.list;
@@ -133,10 +136,12 @@ void main() {
 **當然！我們是開源且自由的項目庫！我們歡迎任何人對 `Apiqqut` 作出貢獻！**
 
 **我們遵循 AGPL-v3.0 自由軟體許可證，這意味著你可以...**
+
 - **無需授權的在您的超酷項目中使用！**
 - **為 `Apiqqut` 做超酷的貢獻，並自豪的向朋友們描述你的偉大貢獻！**
 - **自由拷貝與分發 `Apiqqut`, 與任何朋友們分享！**
 
 **同時，您應該遵守相關的約定...**
+
 - **您需要以相同許可證重新開源您的項目，即便您正在做網路服務。**
 - **您不可以掠奪我們的鳳梨。**
